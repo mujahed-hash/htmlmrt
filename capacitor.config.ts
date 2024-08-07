@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.hotelmart.com',
+  appId: 'in.hotelmart.in',
   appName: 'hmfront',
-  webDir: './dist/hmfront/'
+  webDir: './public/'
 };
 export default config;

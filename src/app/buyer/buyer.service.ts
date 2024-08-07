@@ -3,12 +3,13 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { Observable, tap } from 'rxjs';
 import { baseUrl } from '../services/allurls';
 import { LocalStorageService } from '../auth/login/local-storage.service';
+import { environment } from 'environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
 export class BuyerService {
 
-  baseUrl = baseUrl;
+  baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient, private lService:LocalStorageService) {}
 

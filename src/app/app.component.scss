@@ -9,3 +9,8 @@
     list-style: none;
 }
 
+router-outlet{
+    height: max-content;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+}

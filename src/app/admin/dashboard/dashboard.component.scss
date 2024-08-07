@@ -6,6 +6,7 @@
     gap: 30px;
     justify-content: space-around;
     padding: 15px;
+    height: 100%;
   }
   
   .s-d-i {
@@ -67,7 +68,7 @@
     flex: 1 1 calc(30% - 10px);
     margin: 10px 4px;
     min-width: 10rem;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 }
 @media screen and (orientation:portrait) {
@@ -75,7 +76,7 @@
     flex: 1 1 calc(30% - 10px);
     margin: 10px 4px;
     min-width: 8.5rem;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 }
 @media screen and (max-width:500px) {
@@ -83,7 +84,6 @@
     flex: 1 1 calc(30% - 10px);
     margin: 10px 4px;
     min-width: 9.5rem;
-    overflow: hidden;
   }
 }
 @media screen and (max-width:400px) {
@@ -93,6 +93,5 @@
     width: 8rem;
     max-width: 8rem;
     min-width: 6rem;
-    overflow: hidden;
   }
 }

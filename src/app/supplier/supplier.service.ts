@@ -4,11 +4,12 @@ import { Observable, tap } from 'rxjs';
 import { baseUrl } from '../services/allurls';
 import { LocalStorageService } from '../auth/login/local-storage.service';
 import { AuthService } from '../auth/auth.service';
+import { environment } from 'environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
 export class SupplierService {
-  baseUrl = baseUrl;
+  baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient, private lService:LocalStorageService, public authService: AuthService    ) {}
 
