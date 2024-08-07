@@ -21,6 +21,7 @@ import { NavigationService } from '../navigation.service';
     FormsModule,
     ReactiveFormsModule
   ],
+  exports:[AEUserComponent],
   providers: [NavigationService],
 
 })

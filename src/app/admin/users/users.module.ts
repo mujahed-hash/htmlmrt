@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { AllusersComponent } from './allusers/allusers.component';
+import { AEUserComponent } from '../aeuser/aeuser.component';
 
 
 @NgModule({
@@ -12,6 +13,6 @@ import { AllusersComponent } from './allusers/allusers.component';
   imports: [
     CommonModule,
     UsersRoutingModule
-  ]
+  ],
 })
 export class UsersModule { }
