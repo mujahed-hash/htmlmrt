@@ -1,0 +1,67 @@
+<div class="s-dashboard">
+    <div class="s-d-i s-r">
+      <div *ngIf="order">
+        <h2>Order Received</h2>
+        <div class="stat-value">
+          <h1>{{order.totalOrders}}</h1>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order" class="s-d-i s-d">
+      <div>
+        <h2>Order Delivered</h2>
+        <div class="stat-value">
+          <h1>{{order.deliveredOrders}}</h1>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order" class="s-d-i s-s">
+      <div>
+        <h2>Total Sales..</h2>
+        <div class="stat-value">
+          <h1>{{order.deliveredOrders}}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="s-d-i s-i">
+      <div *ngIf="products">
+        <h2>Total Items</h2>
+        <div class="stat-value">
+          <h1>{{products.count}}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="s-d-i s-i">
+        <div *ngIf="users">
+          <h2>Total Users</h2>
+          <div class="stat-value">
+            <h1>{{users.totalUsers}}</h1>
+          </div>
+        </div>
+      </div>
+    <div class="s-d-i s-i">
+        <div *ngIf="users">
+          <h2>Total Admins</h2>
+          <div class="stat-value">
+            <h1>{{users.admins}}</h1>
+          </div>
+        </div>
+      </div>
+          <div class="s-d-i s-i">
+        <div *ngIf="users">
+          <h2>Total Buyers</h2>
+          <div class="stat-value">
+            <h1>{{users.buyers}}</h1>
+          </div>
+        </div>
+      </div>
+        <div class="s-d-i s-i">
+        <div *ngIf="users">
+          <h2>Total Suppliers</h2>
+          <div class="stat-value">
+            <h1>{{users.suppliers}}</h1>
+          </div>
+        </div>
+      </div>
+  </div>
+  

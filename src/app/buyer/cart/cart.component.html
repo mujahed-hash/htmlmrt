@@ -1,0 +1,26 @@
+<div style="width: 100%;">
+    <div>
+      <button (click)="checkoutAllItems()">Checkout All items</button>
+    </div>
+    <div style="width: 30%; display: inline-block;" *ngFor="let citem of cart">
+      <div style="display: flex; width: 100%; margin-top: 1rem;">
+        <div style="width: 70%; height: max-content; display: flex; align-items: center; background-color: #EBF4F6; padding: 0 0px 10px 5px; margin: 0.4rem 0rem; border-radius: 5px;">
+          <div>
+            <img style="position: relative; left: 1rem; border-radius: 5px;" src="{{citem.product.images[0]}}" alt="">
+          </div>
+          <div style="width: 85%; margin-left: -6rem">
+            <h2>{{citem.product.prodName}}</h2>
+            <p>Quantity: <span style="color:#0D1282">{{citem.quantity}}</span></p>
+            <div style="width: 100%; text-align: right; cursor: pointer; vertical-align: middle;">
+              <button (click)="checkoutSingleItem(citem.product._id, this.token)" style="width: 40%; margin-right: 2rem; background-color: #0D1282; color: white; border: none; border-radius: 5px; padding: 6px 6px;">
+                Checkout single item
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <app-checkout-modal *ngIf="showModal" [user]="user" (confirmCheckout)="confirmCheckout($event)"></app-checkout-modal>
+  

@@ -1,0 +1,131 @@
+img{
+    width:10rem;
+    // min-height: 3rem;
+    height: 10rem;
+    // max-height: 5rem;
+    margin-right: 0.7rem;
+    border-radius: 8px;
+}
+.hh{
+    height: 100%;
+}
+/* Example styling to ensure scrolling */
+// .hh {
+//     height: 100vh; /* Adjust as necessary */
+//     overflow-y: auto;
+//   }
+  
+/* Styles for larger screens */
+p-inputNumber {
+    width: 5rem;
+    height: 2rem;
+}
+.items-main{
+  display: grid; width: 80%;
+  overflow-x: hidden;
+}
+.items {
+    display: inline-block;
+    flex-wrap:nowrap;
+    width: 100%;
+    margin: 2rem;
+  }
+  
+  .item {
+    width: 30%;
+    display: inline-block;
+    margin-bottom: 4.5rem;
+    box-sizing: border-box;
+    height: 12rem;
+  }
+  
+  .itemName {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+.truncate-single-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+//   img {
+//     max-width: 100%;
+//     height: auto;
+//   }
+  .itm-btn{
+    width: 100%;
+    // display: flex;
+    // justify-content: center;
+    text-align: center;
+  }
+  .itm-btn button{
+    width: max-content;
+    padding: 5px;
+    position: relative;
+    right: 8rem;
+    font-size: large;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
+  .sub-item{
+    width:90%; 
+    display: flex; 
+    padding: 8px;
+     margin-bottom: 1rem;
+     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+      overflow: hidden;
+  }
+  /* Styles for tablets and small desktops */
+  @media (max-width: 1024px) {
+    .item {
+      width: 45%;
+      margin: 0 2.5%;
+    }
+  }
+  @media (max-width: 1000px) {
+   .items-main{
+    width: 100%;
+   }
+    .item {
+      width: 48%;
+      margin: 0 0 10px 0;
+      height: 15rem;
+
+    }
+    .itm-btn{
+      width: 100%;
+    }
+    .itm-btn button{
+      right:0;
+    }
+  }
+  /* Styles for mobile devices */
+  @media (max-width: 768px) {
+    .item {
+      width: 100%;
+      margin: 0 0 20px 0;
+    }
+  }
+  @media screen and (orientation:portrait) {
+
+    .item {
+      width: 100%;
+      margin: 0;
+      margin-bottom: 2rem;
+    }
+    .sub-item{
+      margin-bottom: 2rem;
+      margin-left: -0.8rem;
+    }
+  }
+  @media screen and (max-width:380px){
+    .sub-item{
+      margin-left: -1.1rem;
+    }
+  }

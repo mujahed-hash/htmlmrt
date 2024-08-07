@@ -1,0 +1,106 @@
+.nav-items li{
+  display: inline-block;
+  list-style: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: max-content;
+  margin: 0 8px;
+}
+mat-list-item{
+  height: max-content; position: relative;
+}
+mat-toolbar{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #071952;
+    color:white;
+    font-weight: bold;
+}
+
+.sidenav-container {
+    height: 100vh;
+
+  }
+  
+  mat-sidenav {
+    width: 250px;
+  }
+  
+  mat-sidenav-content {
+    padding: 20px;
+    width: 100%;
+
+  }
+  mat-toolbar{
+    position:fixed;
+    top:0;
+    z-index: 2;
+}
+
+mat-sidenav-container {
+    height:100%;
+    width: 100%;
+}
+.mat-list-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mat-icon {
+    margin-right: 16px;
+    position: relative;
+    top:5px;
+  }
+//   details p{
+//     background-color: #071952;
+//     color: white;
+//     padding: 8px 5px;
+//  }
+  .active-link {
+    font-weight: bold;
+    color: #1FA8CF; /* Change this to your desired active color */
+    background-color: #E3FEF7;
+    border-radius: 5px;
+    // padding: 2px 4px;
+  }
+  .active-link span{
+    color: #1FA8CF; /* Change this to your desired active color */
+
+  }
+  
+  .active-link mat-icon {
+    color: #1E56A0; /* Change this to your desired active color */
+  }
+  
+// Move the content down so that it won't be hidden by the toolbar
+mat-sidenav {
+    padding-top: 3.5rem;
+    @media screen and (min-width: 600px) {
+      padding-top: 4rem;
+    }
+
+    .entry{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding:0.75rem;
+    }
+  }
+
+// Move the content down so that it won't be hidden by the toolbar
+mat-sidenav-content{
+    padding-top: 3.5rem;
+    @media screen and (min-width: 600px) {
+        padding-top: 4rem;
+    }
+}
+.logo{
+  width: 3rem;
+  height: 2.5rem;
+}
+.side-sub{
+   width:100%;
+   display:grid;
+   justify-items: center;
+}
