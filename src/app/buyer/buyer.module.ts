@@ -11,7 +11,13 @@ import { CheckoutModalComponent } from './checkout-modal/checkout-modal.componen
 import { ViewitemComponent } from './viewitem/viewitem.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { CheckoutDialogComponent } from './checkout-dialog/checkout-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
 @NgModule({
   declarations: [
     BuyerComponent,
@@ -20,14 +26,20 @@ import { FormsModule } from '@angular/forms';
     CartComponent,
     CheckoutModalComponent,
     ViewitemComponent,
+    CheckoutDialogComponent,
   ],
   imports: [
     CommonModule,
     BuyerRoutingModule,
     InputNumberModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    ToastModule,
+     ButtonModule,
+  ],
+  providers: [MessageService]
 
-  ]
 })
 export class BuyerModule { }

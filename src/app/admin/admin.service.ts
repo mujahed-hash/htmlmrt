@@ -12,6 +12,9 @@ export class AdminService {
 
   constructor(private http: HttpClient) {}
 
+
+
+
   getOrdersCountAdmin(token:any):Observable<any>{
     const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`
@@ -143,16 +146,22 @@ export class AdminService {
    return this.http.get<any>(`${this.baseUrl}/${categoryId}`, options)
 }
 
-  postCategory(categoryData:any, token:any){
+  postCategory(itemType: any, itemName:any, token:any){
        const headers = {
       Authorization: `Bearer ${token}`
     };
   
     // Create an HTTP request with headers
     const options = { headers: new HttpHeaders(headers) };
-    return this.http.post<any>(`${this.baseUrl}/category`, categoryData, options);
+    return this.http.post<any>(`${this.baseUrl}/category`,  {itemType, itemName}, options);
 
   }
 
-  
+  // Update a category by ID
+  updateCategory(id: string, itemType: any, itemName:any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/category/${id}`, itemType, itemName );
+  }
+  deleteCategory(data: { id: string }): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/category/delete-category`, data);
+  }
 }

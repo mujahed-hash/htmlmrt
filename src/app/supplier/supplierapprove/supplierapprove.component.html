@@ -1,6 +1,9 @@
-<div class="order-container">
+<div *ngIf="!orders">
+  <p>Approved Orders Appear Here</p>
+</div>
+<div class="order-container" *ngIf="orders">
     <div *ngFor="let order of orders" class="order-card">
-        <div class="order-head">      <p>Orderd by <strong>{{order?.user?.name}}</strong></p>
+        <div class="order-head" [routerLink]="['/view-order', order.customIdentifer]">      <p>Orderd by <strong>{{order?.user?.name}}</strong></p>
           <p style="margin-bottom: 0.5rem;"> Status:
             <span style="background-color: #ECFFE6; padding: 3px 7px; border-radius: 5px; color: #399918;">{{order.status}} </span> </p>
   </div>

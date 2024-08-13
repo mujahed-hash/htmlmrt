@@ -1,5 +1,6 @@
-<div class="s-dashboard">
-    <div class="s-d-i s-r">
+<div >
+  <div class="s-dashboard">
+    <div routerLink="/supplier/orders-recieved/pending" class="s-d-i s-r">
       <div *ngIf="order">
         <h2>Order Received</h2>
         <div class="stat-value">
@@ -7,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="order" class="s-d-i s-d">
+    <div routerLink="/supplier/orders-recieved/delivered" *ngIf="order" class="s-d-i s-d">
       <div>
         <h2>Order Delivered</h2>
         <div class="stat-value">
@@ -15,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="order" class="s-d-i s-s">
+    <div routerLink="/supplier/orders-recieved/delivered" *ngIf="order" class="s-d-i s-s">
       <div>
         <h2>Total Sales..</h2>
         <div class="stat-value">
@@ -23,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="s-d-i s-i">
+    <div routerLink="/buyer/marketplace" class="s-d-i s-i">
       <div *ngIf="products">
         <h2>Total Items</h2>
         <div class="stat-value">
@@ -31,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div class="s-d-i s-i">
+    <div routerLink="/admin/allusers" class="s-d-i s-i">
         <div *ngIf="users">
           <h2>Total Users</h2>
           <div class="stat-value">
@@ -39,7 +40,7 @@
           </div>
         </div>
       </div>
-    <div class="s-d-i s-i">
+    <div routerLink="/admin/allusers"  class="s-d-i s-i">
         <div *ngIf="users">
           <h2>Total Admins</h2>
           <div class="stat-value">
@@ -47,7 +48,7 @@
           </div>
         </div>
       </div>
-          <div class="s-d-i s-i">
+          <div routerLink="/admin/allusers"  class="s-d-i s-i">
         <div *ngIf="users">
           <h2>Total Buyers</h2>
           <div class="stat-value">
@@ -55,7 +56,7 @@
           </div>
         </div>
       </div>
-        <div class="s-d-i s-i">
+        <div  routerLink="/admin/allusers" class="s-d-i s-i">
         <div *ngIf="users">
           <h2>Total Suppliers</h2>
           <div class="stat-value">
@@ -65,3 +66,4 @@
       </div>
   </div>
   
+</div>

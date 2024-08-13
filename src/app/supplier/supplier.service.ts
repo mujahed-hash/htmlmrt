@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, throwError } from 'rxjs';
 import { baseUrl } from '../services/allurls';
 import { LocalStorageService } from '../auth/login/local-storage.service';
 import { AuthService } from '../auth/auth.service';
@@ -23,10 +23,31 @@ export class SupplierService {
          return this.http.get<{ totalProducts: number, products: any[] }>(`${this.baseUrl}/supplier/items?start=${start}&limit=${limit}`, options);
   }
 
-  getProducts(start: number, limit: number): Observable<{ totalProducts: number, products: any[] }> {4
-    return this.http.get<{ totalProducts: number, products: any[] }>(`${this.baseUrl}/products?start=${start}&limit=${limit}`);
-  }
+  // getProducts(start: number, limit: number, token:any): Observable<{ totalProducts: number, products: any[] }> {
+  //   const headers = new HttpHeaders({
+  //     'Authorization': `Bearer ${token}`
+  //   });
   
+  //   const options = { headers: headers };
+  //   return this.http.get<{ totalProducts: number, products: any[] }>(`${this.baseUrl}/products?start=${start}&limit=${limit}`, options);
+  // }
+  getProducts(start: number, limit: number): Observable<{ totalProducts: number, products: any[] }> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.error('Token is missing');
+        return throwError('Token is missing');
+    }
+
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<{ totalProducts: number, products: any[] }>(
+        `${this.baseUrl}/products?start=${start}&limit=${limit}`, 
+        { headers }
+    );
+}
+
   getProductByCustomIdentifier(customIdentifier: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/product/${customIdentifier}`);
   }

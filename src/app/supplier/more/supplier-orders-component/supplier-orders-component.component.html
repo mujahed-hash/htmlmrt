@@ -1,6 +1,9 @@
-<div class="order-container">
+<div *ngIf="!orders">
+  <p>Received Orders Appear Here</p>
+</div>
+<div class="order-container" *ngIf="orders">
     <div *ngFor="let order of orders" class="order-card">
-        <div class="order-head">      <p>Orderd by <strong>{{order?.user?.name}}</strong></p>
+        <div class="order-head" [routerLink]="['/view-order', order.customIdentifer]">      <p>Orderd by <strong>{{order?.user?.name}}</strong></p>
           <p style="margin-bottom: 0.5rem;"> Status:
             <span style="background-color: #D6E4F0; padding: 3px 7px; border-radius: 5px; color: #2657C1;">{{order.status}} </span> </p>
   </div>
@@ -15,7 +18,7 @@
             <p  style="position: relative; width:max-content; float: right;">{{order?.totalPrice | currency : 'INR'}} for       
                    {{or?.quantity}} item</p>
          </div> -->
-        <div class="item">
+        <div class="item" [routerLink]="['/view-order/', ]">
             <p class="product-name">Order for: <strong>{{or.product.prodName}}</strong> 
             </p> 
             <p class="order-details product-info product-price">Order Size type: <strong>{{or.prodSize}}</strong></p>

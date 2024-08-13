@@ -1,11 +1,17 @@
+.main-prod{
+  height: max-content;
+}
 .product{
     width:80%;
-    height:max-content;
-    background-color:#EBF4F6;
+    height:100%;
+    // background-color:#EBF4F6;
     margin: 5px;
     padding:20px; 
     border-radius: 14px;
     margin-top: 10px;
+    overflow: hidden;
+    margin-bottom: 8rem;
+    background-color: #e4f0ff;
 }
 .cancel{
     padding: 5px; font-size: large; background-color: #D71313; color: white; border: none; border-radius: 5px;
@@ -25,17 +31,13 @@
     padding: 8px;
 
   }
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    // padding: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background-color: #fff;
-    padding-left: 2rem;
-    padding-top: 2rem;
+
+
+  form{
+    overflow: hidden;
+    height: 100%;
+    margin-bottom: 8rem;
   }
-  
   .form-group {
     display: flex;
     flex-direction: column;
@@ -74,7 +76,7 @@
   }
 
   mat-form-field{
-    background-color: white;
+    // background-color: white;
     border: none;
   }
   
@@ -150,14 +152,17 @@
       margin: 0px;
       padding:20px; 
       margin-top: 2rem;
-      width: 90%;
-      margin-left: 1rem;
+      width: 100%;
+      // margin-left: 1rem;
 
     }
     .cancel{
       position: relative;
-      top:1rem;
-      right:1rem;
+      // top:1rem;
+      // right:1rem;
       font-size: small;
+    }
+    form{
+      height: 100%;
     }
   }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,13 +14,16 @@ import { AngularmaterialModule } from './angularmaterial/angularmaterial.module'
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavigationService } from './navigation.service';
 import { IonicModule } from '@ionic/angular';
+import { MessageService } from 'primeng/api';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,9 @@ import { IonicModule } from '@ionic/angular';
       rippleEffect: false,  // Disable ripple effect globally
     }),
   ],
-  providers: [NavigationService],
-  bootstrap: [AppComponent]
+  providers: [NavigationService,MessageService],
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class AppModule { }

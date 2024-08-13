@@ -50,12 +50,11 @@ a{
     text-decoration: none;
     color: inherit;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0; width: 100%;     overflow-x: hidden;
+html, body { height: 100% }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0; width: 100%;overflow-x: hidden; 
 }
 *{
     width: 100%;
-
 }
 
 
@@ -85,4 +84,14 @@ ion-ripple-effect {
 * {
   -webkit-tap-highlight-color: transparent;
   outline: none;
+}
+router-outlet{
+  height: 100%;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+}
+@media screen and (orientation:portrait){
+  *{
+    overflow-x: hidden;
+  }
 }

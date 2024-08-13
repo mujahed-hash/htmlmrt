@@ -13,8 +13,13 @@ export class BuyerService {
 
   constructor(private http: HttpClient, private lService:LocalStorageService) {}
 
-  getProducts(start: number, limit: number): Observable<{ totalProducts: number, products: any[] }> {
-    return this.http.get<{ totalProducts: number, products: any[] }>(`${this.baseUrl}/products?start=${start}&limit=${limit}`);
+  getProducts(start: number, limit: number, token:any): Observable<{ totalProducts: number, products: any[] }> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+  
+    const options = { headers };
+    return this.http.get<{ totalProducts: number, products: any[] }>(`${this.baseUrl}/products?start=${start}&limit=${limit}`, options);
   }
   
   getProductByCustomIdentifier(customIdentifier: string): Observable<any> {
@@ -73,4 +78,26 @@ export class BuyerService {
     const options = { headers };    
     return this.http.get(`${this.baseUrl}/order/items`, options);
   }
+
+  // deleteCartItem(cartItemId: any,, token:any): Observable<any> {
+  //   const headers = new HttpHeaders({
+  //     Authorization: `Bearer ${token}`
+  //   });
+  //   const options = { headers };    
+  //   return this.http.delete(`${this.baseUrl}/cart/item`, cartItemId, options);    ''
+  // }
+
+  deleteCartItem(cartItemId: any, token: any): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    
+    const options = {
+      headers: headers,
+      body: { cartItemId: cartItemId }
+    };
+    
+    return this.http.delete(`${this.baseUrl}/cart/item`, options);
+  }
+  
 }

@@ -27,19 +27,47 @@ ngOnInit(){
 
   }
 }
-  login() {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-      this.authService.login(email, password).subscribe(
-        response => {
-          localStorage.setItem('token', response.token);
-          this.router.navigate(['/home']);
-          this.loggedIn = true;
-        },
-        error => {
-          console.error('Login failed', error);
-        }
-      );
-    }
+//   login() {
+//     if (this.loginForm.valid) {
+//       const { email, password } = this.loginForm.value;
+//       this.authService.login(email, password).subscribe(
+//         response => {
+//           localStorage.setItem('token', response.token);
+//           this.router.navigate(['/home']);
+//           this.loggedIn = true;
+//         },
+//         error => {
+//           console.error('Login failed', error);
+//         }
+//       );
+//     }
+//   }
+login() {
+  if (this.loginForm.valid) {
+    // Extract email and password from the form values
+    const { email, password } = this.loginForm.value;
+
+    // Normalize the email to lowercase
+    const normalizedEmail = email.trim().toLowerCase();
+
+    // Call the authentication service with the normalized email
+    this.authService.login(normalizedEmail, password).subscribe(
+      response => {
+        // Store the token in local storage
+        localStorage.setItem('token', response.token);
+        
+        // Navigate to the home page
+        this.router.navigate(['/home']);
+        
+        // Set loggedIn flag
+        this.loggedIn = true;
+      },
+      error => {
+        // Log error message
+        console.error('Login failed', error);
+      }
+    );
   }
+}
+
 }

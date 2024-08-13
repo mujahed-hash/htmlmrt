@@ -8,7 +8,7 @@
 <div class="order-container" style="    overflow-x: hidden;">
  
     <div class="order" *ngFor="let or of order">
-      <div class="order-item"  *ngFor="let oitem of or.orderItems; let i = index">
+      <div class="order-item" [routerLink]="['/view-order', or.customIdentifer]" *ngFor="let oitem of or.orderItems; let i = index">
         <div style="width:max-content;position: relative; float: right;">
             <small class="order-index" style="width: max-content; position: relative; float: right; background-color: #E3FEF7; color: #003C43; padding: 2px 4px; border-radius: 5px;">
                 Orders: {{i + 1}} of {{or.orderItems.length}}

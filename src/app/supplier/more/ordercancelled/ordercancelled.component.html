@@ -1,6 +1,9 @@
-<div class="order-container">
+<div *ngIf="orders.length < 1">
+  <p>Cancelled Order Appear Here</p>
+</div>
+<div class="order-container" *ngIf="orders">
     <div *ngFor="let order of orders" class="order-card">
-        <div class="order-head">   
+        <div class="order-head" [routerLink]="['/view-order', order.customIdentifer]">   
             <div style="float: right; width: auto;">
                 <p style="margin-bottom: 0.5rem; width: max-content;"> Status:
                     <span style="background-color: #e95d5d; padding: 3px 7px; border-radius: 5px; color: white;">{{ order.status }}</span>

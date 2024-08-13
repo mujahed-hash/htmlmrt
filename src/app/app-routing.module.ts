@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AEUserComponent } from './admin/aeuser/aeuser.component';
+import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
     { path: 'supplier', loadChildren: () => import('./supplier/supplier.module').then(m => m.SupplierModule), canActivate: [AuthGuard, RoleGuard], data: { role: 'supplier' } },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard, RoleGuard], data: { role: 'admin' } },
   {path:'', loadChildren:()=>import('./shared/shared.module').then(m=>m.SharedModule)},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path:'profile', component:ProfileComponent },
   {path:'',redirectTo:'home', pathMatch:'full'}, // Default route for logged-in users
   // { path: '**', redirectTo: 'home' , canActivate: [AuthGuard]} // Redirect to home for any unknown routes
 ];

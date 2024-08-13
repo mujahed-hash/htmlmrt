@@ -1,4 +1,7 @@
-<div class="order-container">
+<div *ngIf="!orders">
+  <p>Delivered Orders Appear Here</p>
+</div>
+<div class="order-container" *ngIf="orders">
     <div *ngFor="let order of orders" class="order-card">
         <div [routerLink]="['/view-order', order.customIdentifer]" class="order-head">   
             <div style="float: right; width: auto;">

@@ -1,26 +1,41 @@
-<div style="width: 100%;">
-    <div>
-      <button (click)="checkoutAllItems()">Checkout All items</button>
+<div class="card-main" style="width: 100%;">
+  <div *ngIf="cart.length<1" class="checkout-all" style="">
+    <p style="background-color: white; padding: 4px 8px; border: #c8c9d4 1.5px solid; color:#0D1282; width:max-content; border-radius: 9px;">Your Cart is empty</p>
+</div>
+    <div *ngIf="cart.length>1" class="checkout-all" style="">
+      <button style=" display: flex; align-items: center;" (click)="checkoutAllItems()">        <mat-icon>shopping_cart</mat-icon>
+        Checkout All items</button>
     </div>
-    <div style="width: 30%; display: inline-block;" *ngFor="let citem of cart">
-      <div style="display: flex; width: 100%; margin-top: 1rem;">
-        <div style="width: 70%; height: max-content; display: flex; align-items: center; background-color: #EBF4F6; padding: 0 0px 10px 5px; margin: 0.4rem 0rem; border-radius: 5px;">
+   <div class="cart">
+    <div class="cart-item" *ngFor="let citem of cart">
+
+      <div class="c-i-sub" >
+      
+        <div class="c-i-sub2" >
+         
           <div>
-            <img style="position: relative; left: 1rem; border-radius: 5px;" src="{{citem.product.images[0]}}" alt="">
+            <img src="{{citem.product.images[0]}}" alt="">
           </div>
-          <div style="width: 85%; margin-left: -6rem">
+          <div >
             <h2>{{citem.product.prodName}}</h2>
             <p>Quantity: <span style="color:#0D1282">{{citem.quantity}}</span></p>
-            <div style="width: 100%; text-align: right; cursor: pointer; vertical-align: middle;">
-              <button (click)="checkoutSingleItem(citem.product._id, this.token)" style="width: 40%; margin-right: 2rem; background-color: #0D1282; color: white; border: none; border-radius: 5px; padding: 6px 6px;">
-                Checkout single item
+            <div style="display: flex; gap:4px">
+              <button class="b1" (click)="checkoutSingleItem()" >
+                Checkout
+              </button>
+              
+              <button (click)="deleteCart(citem._id, this.token)" style="width: max-content;border: none; text-align: center; background: none; color:#D71313">  
+                <mat-icon style="width: max-content; float: right;">delete</mat-icon>
               </button>
             </div>
           </div>
         </div>
       </div>
+      <app-checkout-modal *ngIf="showModal2" [user]="user" (confirmCheckout)="confirmCheckoutSingle(citem.product._id, $event)"></app-checkout-modal>
+
     </div>
+
+   </div>
   </div>
-  
+
   <app-checkout-modal *ngIf="showModal" [user]="user" (confirmCheckout)="confirmCheckout($event)"></app-checkout-modal>
-  

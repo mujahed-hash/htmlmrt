@@ -8,7 +8,7 @@ import { SupplierService } from '../../supplier.service';
 })
 export class OrdercancelledComponent {
   token!:any;
-  orders:any;
+  orders:any[]=[];
   newStatus: { [key: string]: string } = {}; // Object to hold the new status for each order
   constructor(
     private productService: SupplierService,

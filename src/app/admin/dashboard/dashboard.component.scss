@@ -1,12 +1,13 @@
 
 .s-dashboard {
-    width: 100%;
+    width: max-content;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     justify-content: space-around;
     padding: 15px;
     height: 100%;
+    // margin-bottom: 10rem;
   }
   
   .s-d-i {
@@ -50,6 +51,8 @@
 }
 @media screen and (orientation:portrait) {
     .s-dashboard {
+      height: max-content;
+      margin-bottom: 10rem;
     }
   .s-d-i {
     flex: 1 1 calc(20% - 10px);
@@ -59,7 +62,7 @@
     max-width: 8.8rem;
     min-width:8.8rem;
     height:12rem; 
-    min-height: 12rem;
+    margin-bottom: 5rem;
 }
 }
 

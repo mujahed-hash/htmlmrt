@@ -2,6 +2,8 @@ import { Component,ElementRef,HostListener, ViewChild } from '@angular/core';
 import { LocalStorageService } from 'src/app/auth/login/local-storage.service'
 import { SupplierService } from 'src/app/supplier/supplier.service';
 import { BuyerService } from '../buyer.service';
+import { MessageService } from 'primeng/api';
+import { NotificationService,Notification  } from 'src/app/notification.service';
 @Component({
   selector: 'app-buyeritems',
   templateUrl: './buyeritems.component.html',
@@ -16,18 +18,24 @@ export class BuyeritemsComponent {
   hasMoreProducts = true;
   event!:any;
   quantity!:any;
+  quant:any;
   product:any;
   token:any;
-  
-  quantities: { [key: string]: number } = {}; // This object holds the quantity for each product
+  quantities: { [key: string]: number } = {}; 
+  notifications: Notification[] = [];
+    // This object holds the quantity for each product
   @ViewChild('loadingIndicator') loadingIndicator!: ElementRef;
    constructor(private supplyService: SupplierService,private lService:LocalStorageService,  private el: ElementRef, 
-    private buyerService:BuyerService ){}
+    private buyerService:BuyerService, private messageService: MessageService, private notificationService: NotificationService ){
+    }
    ngOnInit() {
     this.loggedUser = this.lService.getUserIdFromToken();
     this.loadProducts();
     this.token = localStorage.getItem('token');
     console.log(this.quantity);
+    this.notificationService.notifications$.subscribe(notifications => {
+      this.notifications = notifications;
+    });
     this.products.forEach(product => {
       this.quantities[product.id] = this.quantities[product.id] || 1; // Set default quantity to 1
     });
@@ -43,14 +51,16 @@ export class BuyeritemsComponent {
 
     this.isLoading = true;
     this.supplyService.getProducts(this.start, this.limit).subscribe(
-      data => {
+      (data:any) => {
+        console.log(data)
         this.isLoading = false;
         if (data && Array.isArray(data.products)) {
           this.products = [...this.products, ...data.products];
           this.products.forEach(product => {
-            if (!this.quantities[product.id]) {
-              this.quantities[product.id] = 1; // Set default quantity to 1 if not already set
+            if (!this.quantities[product._id]) {
+              this.quantities[product._id] = 1; // Set default quantity to 1 if not already set
             }
+            // this.incart[product.id] = data.inCart?.includes(product.id);
           });
           this.start += this.limit;
           this.checkContentHeight();
@@ -70,9 +80,10 @@ export class BuyeritemsComponent {
   }
 
   checkContentHeight() {
-    const contentHeight = this.el.nativeElement.querySelector('.items').offsetHeight;
+    const contentHeight = this.el.nativeElement.querySelector('.items-').offsetHeight;
     const windowHeight = window.innerHeight;
-    this.hasMoreProducts = contentHeight < windowHeight;
+    // this.hasMoreProducts = contentHeight < windowHeight;
+    this.hasMoreProducts = contentHeight > windowHeight;
   }
 
   @HostListener('window:resize')
@@ -94,15 +105,24 @@ export class BuyeritemsComponent {
     }
   }
 
-  addProductToCart(productId: string) {
-    const quantity = this.quantities[productId] || 1// Default to 1 if quantity is not set
+  addProductToCart(productId: any) {
+    const quantity = this.quantities[productId] || 1;
+    console.log()
     this.buyerService.addToCart(productId, quantity, this.token).subscribe(
       (data: any) => {
+        this.loadProducts();
+        this.notificationService.addNotification('Item added to cart!', 'success');
         console.log(data);
       },
       (error: any) => {
         console.error('Error adding product to cart:', error);
       }
     );
+
   }
+  
+
+  // gotocart(){
+  //   this.router.navigate['/']
+  // }
 }

@@ -14,5 +14,11 @@ export class AllService {
   getProducts():Observable<any>{
     return this.http.get(`${this.baseUrl}/products`);
   }
+  getUserProfile(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
 
+    return this.http.get(`${this.baseUrl}/userProfile`, { headers });
+  }
 }

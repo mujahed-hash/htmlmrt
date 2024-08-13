@@ -5,6 +5,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AEUserComponent } from './aeuser/aeuser.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { RoleGuard } from '../guards/role.guard';
+import { GetcategoriesComponent } from './getcategories/getcategories.component';
+import { PEcategoriesComponent } from './pecategories/pecategories.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +18,9 @@ const routes: Routes = [
   {path:'aeuser/:customIdentifer', component:AEUserComponent},
   {path:'', loadChildren:()=> import('./orders/orders.module').then(m=>m.OrdersModule), canActivate: [AuthGuard, RoleGuard], data: { role: 'admin' }},
   { path: '', loadChildren: () => import('./users/users.module').then(m => m.UsersModule), canActivate: [AuthGuard, RoleGuard], data: { role: 'admin' } },
-
+  {path:'categories', component:GetcategoriesComponent},
+  {path:'add-category', component:PEcategoriesComponent},
+  {path:'get-category', component:PEcategoriesComponent}
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

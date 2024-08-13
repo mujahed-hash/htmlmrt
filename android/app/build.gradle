@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.hotelmart.com"
+    namespace "in.hotelmart.in"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.hotelmart.com"
+        applicationId "in.hotelmart.in"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

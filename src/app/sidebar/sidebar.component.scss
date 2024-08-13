@@ -7,7 +7,22 @@
   margin: 0 8px;
 }
 mat-list-item{
-  height: max-content; position: relative;
+  height: max-content; 
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 0.5rem;
+}
+mat-list-item details{
+  padding: 0.5rem 0;
+}
+details{
+  overflow: hidden;
+}
+sidenav-container summary{
+  width: 100%;
+  overflow: hidden;
+  height: max-content;
 }
 mat-toolbar{
     margin: 0;
@@ -20,9 +35,8 @@ mat-toolbar{
 
 .sidenav-container {
     height: 100vh;
-
   }
-  
+
   mat-sidenav {
     width: 250px;
   }
@@ -57,22 +71,51 @@ mat-sidenav-container {
 //     color: white;
 //     padding: 8px 5px;
 //  }
-  .active-link {
+  .active-link  {
     font-weight: bold;
-    color: #1FA8CF; /* Change this to your desired active color */
-    background-color: #E3FEF7;
-    border-radius: 5px;
+    color: #FCD59B; /* Change this to your desired active color */
+    background-color: #163172;
+    border-radius:none;
     // padding: 2px 4px;
   }
   .active-link span{
-    color: #1FA8CF; /* Change this to your desired active color */
+    color: white; /* Change this to your desired active color */
+    padding-bottom: 0.5rem;
 
+  }
+  .active-link p{
+    background-color: who;
   }
   
   .active-link mat-icon {
-    color: #1E56A0; /* Change this to your desired active color */
+    color: white; /* Change this to your desired active color */
   }
-  
+  .active-link details{
+    // background-color: white;
+    color: #071952;
+  }
+  .active-link .side-sub{
+    color: white;
+
+  }
+   .active-link summary {
+    color: white;
+  }
+  details{
+    display: grid;
+    align-content: center;
+    vertical-align: middle;
+  }
+  details p{
+
+    border: #FCD59B 2px solid;
+    border-radius: none;
+    padding: 0;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+  }
 // Move the content down so that it won't be hidden by the toolbar
 mat-sidenav {
     padding-top: 3.5rem;
@@ -97,10 +140,27 @@ mat-sidenav-content{
 }
 .logo{
   width: 3rem;
-  height: 2.5rem;
+  height: 2.7rem;
+  border-radius: 4px;
+  position: relative;
+  top: 0.2rem;
+  border: white 2px solid;
 }
 .side-sub{
    width:100%;
    display:grid;
    justify-items: center;
+   margin-bottom: 0.5rem;
+}
+
+.side-sub p{
+  margin-bottom: 0rem;
+  padding: 0;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border: #D6E4F0 2px solid;
+  border-radius: none;
+}
+mat-list-item span{
+  padding-bottom: 0.5rem;
 }

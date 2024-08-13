@@ -2,7 +2,7 @@
   <button mat-icon-button (click)="toggleSidenav()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span routerLink="/home">
+  <span class="for-logo" routerLink="/home">
     <img class="logo" src="assets/hmlogo.jpg" alt="">
   </span>
   <nav *ngIf="authService.isLoggedIn()">  
@@ -27,63 +27,75 @@
 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile || isSidenavOpened">
-    <mat-nav-list>
-      <mat-list-item routerLink="/admin" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isAdmin()">
+    <mat-nav-list >
+      <mat-list-item (click)="toggleSidenav()" routerLink="/profile" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </mat-list-item>
+      <mat-list-item (click)="toggleSidenav()" routerLink="/admin/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isAdmin()">
         <mat-icon>dashboard</mat-icon>
         <span>Admin Dashboard</span>
       </mat-list-item>
 
-      <mat-list-item style="height: max-content; position: relative;" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"  *ngIf="authService.isAdmin()">
+      <mat-list-item  style="height: max-content; position: relative; width: 100%; padding-bottom: 0.5rem;" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"  *ngIf="authService.isAdmin()">
         <details >
-          <summary routerLinkActive="active-link" style="width: 5rem;" ><mat-icon>group</mat-icon>
+          <summary routerLinkActive="active-link" style="width: 100%; overflow: hidden;" ><mat-icon>group</mat-icon>
             Users</summary>
-          <p routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"  routerLink="/admin/allusers">All Users</p>
-          <p routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"  routerLink="/admin/adduser">Add Users</p>
+            <div class="side-sub">
+
+          <p (click)="toggleSidenav()" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"  routerLink="/admin/allusers">All Users</p>
+          <p (click)="toggleSidenav()" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"  routerLink="/admin/adduser">Add Users</p>
+        </div>
         </details>
         
       </mat-list-item>
-      <mat-list-item  routerLink="/buyer/marketplace" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isAdmin()">
+      <mat-list-item (click)="toggleSidenav()" routerLink="/buyer/marketplace" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isAdmin()">
         <mat-icon>shopping_cart</mat-icon>
         <span>All Marketplace</span>
       </mat-list-item>
       <mat-list-item  routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"style="height: max-content; position: relative; padding-bottom: 0.5rem;"   *ngIf="authService.isAdmin()">
          <details >
-          <summary routerLinkActive="active-link" style="width: 5rem;" ><mat-icon>group</mat-icon>
+          <summary routerLinkActive="active-link" style="  overflow: hidden;
+          " ><mat-icon>group</mat-icon>
             Orders</summary>
          <div class="side-sub">
-          <p routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/admin/allorders">All Orders</p>
-          <p routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/supplier/orders-recieved/pending">Orders Made</p>
-          <p routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/supplier/orders-approved/approved">Orders Approved</p>
-          <p routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/supplier/orders-delivered/delivered">Orders Delivered</p>
-          <p routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/supplier/orders-cancelled/cancelled">Orders Cancelled</p>
+          <p (click)="toggleSidenav()" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/admin/allorders">All Orders</p>
+          <p (click)="toggleSidenav()" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/supplier/orders-recieved/pending">Orders Made</p>
+          <p (click)="toggleSidenav()" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/supplier/orders-approved/approved">Orders Approved</p>
+          <p (click)="toggleSidenav()" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/supplier/orders-delivered/delivered">Orders Delivered</p>
+          <p (click)="toggleSidenav()" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/supplier/orders-cancelled/cancelled">Orders Cancelled</p>
          </div>
         </details>
       </mat-list-item>
-
+      
+      <mat-list-item (click)="toggleSidenav()" routerLink="/admin/categories" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isAdmin()">
+        <mat-icon>shopping_cart</mat-icon>
+        <span>Categories</span>
+      </mat-list-item>
 
 
       <!-- Supplier -->
-      <mat-list-item routerLink="/supplier" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier() ">
+      <mat-list-item (click)="toggleSidenav()"  routerLink="/supplier" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier() ">
         <mat-icon>business</mat-icon>
         <span>Supplier Dashboard</span>
       </mat-list-item>
-      <mat-list-item routerLink="/supplier/allitems" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier()">
+      <mat-list-item (click)="toggleSidenav()" routerLink="/supplier/allitems" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier()">
         <mat-icon>bubble_chart</mat-icon>
         <span>All Items</span>
       </mat-list-item>
-      <mat-list-item routerLink="/supplier/product/add" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier()">
+      <mat-list-item (click)="toggleSidenav()" routerLink="/supplier/product/add" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier()">
         <mat-icon>sell</mat-icon>
         <span>Sell</span>
       </mat-list-item>
-      <mat-list-item routerLink="/supplier/orders-recieved" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier()">
+      <mat-list-item (click)="toggleSidenav()" routerLink="/supplier/orders-recieved" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier()">
         <mat-icon>move_to_inbox</mat-icon>
         <span>Orders Received</span>
       </mat-list-item>
-      <mat-list-item routerLink="/supplier/orders-approved" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier()">
+      <mat-list-item (click)="toggleSidenav()" routerLink="/supplier/orders-approved" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier()">
         <mat-icon>move_to_inbox</mat-icon>
         <span>Orders Approved</span>
       </mat-list-item>
-            <mat-list-item routerLink="/supplier/orders-delivered" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier()">
+            <mat-list-item (click)="toggleSidenav()" routerLink="/supplier/orders-delivered" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isSupplier()">
         <mat-icon>airport_shuttle</mat-icon>
         <span>Orders Delivered</span>
       </mat-list-item>
@@ -92,16 +104,16 @@
         <span>Orders Cancelled</span>
       </mat-list-item>
       <!-- Buyer -->
-      <mat-list-item routerLink="/buyer/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isBuyer()">
-        <mat-icon>shopping_cart</mat-icon>
+      <mat-list-item (click)="toggleSidenav()" routerLink="/buyer/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isBuyer()">
+        <mat-icon>home_app_logo</mat-icon>
         <span>Buyer Dashboard</span>
       </mat-list-item>
-      <mat-list-item routerLink="/buyer/marketplace" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isBuyer()">
+      <mat-list-item (click)="toggleSidenav()" routerLink="/buyer/marketplace" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isBuyer()">
         <mat-icon>shopping_cart</mat-icon>
         <span>Marketplace</span>
       </mat-list-item>
-      <mat-list-item routerLink="/buyer/purchases" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isBuyer()">
-        <mat-icon>shopping_cart</mat-icon>
+      <mat-list-item (click)="toggleSidenav()" routerLink="/buyer/purchases" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" *ngIf="authService.isBuyer()">
+        <mat-icon style="">receipt_long</mat-icon>
         <span>Purchases</span>
       </mat-list-item>
 

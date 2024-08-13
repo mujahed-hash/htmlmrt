@@ -7,19 +7,30 @@ import { AdminComponent } from './admin/admin.component';
 import { AEUserComponent } from './aeuser/aeuser.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationService } from '../navigation.service';
-
+import { GetcategoriesComponent } from './getcategories/getcategories.component';
+import { PEcategoriesComponent } from './pecategories/pecategories.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     AdminComponent,
-    AEUserComponent
+    AEUserComponent,
+    GetcategoriesComponent,
+    PEcategoriesComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   exports:[AEUserComponent],
   providers: [NavigationService],
